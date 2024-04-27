@@ -15,6 +15,7 @@ datasource db {
 
 model admin {
   id      Int @id @default(autoincrement())
+  username String @unique
   email   String   @unique
   password String
   created_at DateTime @default(now())

@@ -10,9 +10,11 @@
     "eslint-plugin-import",
     "eslint-plugin-prettier"
   ],
-  "extends": ["eslint-config-airbnb-base"],
+  "extends": ["eslint-config-airbnb-base", "prettier"],
   "rules": {
     "no-unused-vars": "off",
-    "no-console": "warn"
+    "no-console": "warn",
+    "comma-dangle": "off",
+    "implicit-arrow-linebreak": "warn"
   }
 }
