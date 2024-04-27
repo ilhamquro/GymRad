@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon --es-module-specifier-resolution=node index.js",
-    "start": "node --es-module-specifier-resolution=node index.js"
+    "start": "node --es-module-specifier-resolution=node index.js",
+    "migrate-init": "npx prisma migrate dev --name init",
+    "migrate": "npx prisma migrate dev"
   },
   "dependencies": {
     "@prisma/client": "^5.13.0",
