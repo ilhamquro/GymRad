@@ -1,0 +1,18 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "plugins": [
+    "simple-import-sort",
+    "unused-imports",
+    "eslint-plugin-import",
+    "eslint-plugin-prettier"
+  ],
+  "extends": ["eslint-config-airbnb-base"],
+  "rules": {
+    "no-unused-vars": "off",
+    "no-console": "warn"
+  }
+}
