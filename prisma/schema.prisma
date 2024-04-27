@@ -9,6 +9,47 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model admin {
+  id      Int @id @default(autoincrement())
+  email   String   @unique
+  password String
+  created_at DateTime @default(now())
+  updated_at DateTime?
+}
+
+model user {
+  id      Int @id @default(autoincrement())
+  username String @unique
+  email   String   @unique
+  password String
+  no_hp Int @unique
+  active_packages active_package[]
+  created_at DateTime @default(now())
+  updated_at DateTime?
+}
+
+model package_type {
+  id      Int @id @default(autoincrement())
+  name String @unique
+  price Int
+  period Int
+  active_packages active_package[]
+  created_at DateTime @default(now())
+  updated_at DateTime?
+}
+
+model active_package {
+  id      Int @id @default(autoincrement())
+  price Int
+  period Int
+  package_type package_type @relation(fields: [package_type_id], references: [id])
+  package_type_id Int @unique
+  user user @relation(fields: [user_id], references: [id])
+  user_id Int @unique
+  created_at DateTime @default(now())
+  updated_at DateTime?
 }
