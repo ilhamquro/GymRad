@@ -1,5 +1,5 @@
-import adminService from '../services/adminService';
-import { compare, encrypt } from '../utils/hasher';
+import adminService from '../services/adminService.js';
+import { compare, encrypt } from '../utils/hasher.js';
 
 const create = async (req, res) => {
   const { username, email, password } = req.body;

@@ -15,6 +15,7 @@
     "no-unused-vars": "off",
     "no-console": "warn",
     "comma-dangle": "off",
-    "implicit-arrow-linebreak": "warn"
+    "implicit-arrow-linebreak": "warn",
+    "import/extensions": "off"
   }
 }

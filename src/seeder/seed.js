@@ -1,4 +1,4 @@
-import prisma from '../utils/prismaClient';
+import prisma from '../utils/prismaClient.js';
 
 const seed = async () => {
   await prisma.package_type.createMany({
