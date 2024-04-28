@@ -1,4 +1,5 @@
 import adminService from '../services/adminService.js';
+import databaseErrorHandler from '../utils/errorHandler.js';
 import { compare, encrypt } from '../utils/hasher.js';
 
 const create = async (req, res) => {
@@ -9,20 +10,7 @@ const create = async (req, res) => {
   const result = await adminService.create(username, email, encryptedPassword);
 
   if (result.error) {
-    switch (result.error.meta.target) {
-      case 'admin_email_key':
-        res.status(result.code);
-        res.send('Email is already in use');
-        break;
-
-      case 'admin_username_key':
-        res.status(result.code);
-        res.send('Username is already in use');
-        break;
-
-      default:
-        break;
-    }
+    databaseErrorHandler(result, res);
     return;
   }
 

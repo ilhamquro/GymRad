@@ -1,27 +1,32 @@
-const create = (req, res, next) => {
-  const { username, email, password } = req.body;
+import isAllFilled from '../utils/isFilled.js';
 
-  if (
-    !username ||
-    !email ||
-    !password ||
-    username.length === 0 ||
-    email.length === 0 ||
-    password.length === 0
-  ) {
+const create = (req, res, next) => {
+  const payload = req.body;
+
+  const unfilledProperties = isAllFilled(payload);
+
+  if (unfilledProperties.length > 0) {
     res.status(400);
-    res.send('Please fill all required fields');
+    res.send(
+      `Please fill the following properties, (${unfilledProperties.join(', ')})!`
+    );
+    return;
   }
 
   next();
 };
 
 const login = (req, res, next) => {
-  const { email, password } = req.body;
+  const payload = req.body;
 
-  if (!email || !password || email.length === 0 || password.length === 0) {
+  const unfilledProperties = isAllFilled(payload);
+
+  if (unfilledProperties.length > 0) {
     res.status(400);
-    res.send('Please fill all required fields');
+    res.send(
+      `Please fill the following properties, (${unfilledProperties.join(', ')})!`
+    );
+    return;
   }
 
   next();
