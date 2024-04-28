@@ -5,8 +5,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --es-module-specifier-resolution=node index.js",
-    "start": "node --es-module-specifier-resolution=node index.js",
+    "dev": "nodemon --experimental-specifier-resolution=node index.js",
+    "start": "node --experimental-specifier-resolution=node index.js",
     "migrate-init": "npx prisma migrate dev --name init",
     "migrate": "npx prisma migrate dev",
     "seed": "npx prisma db seed"
@@ -18,7 +18,7 @@
     "express": "^4.19.2"
   },
   "prisma": {
-    "seed": "node --es-module-specifier-resolution=node src/seeder/seed.js"
+    "seed": "node --experimental-specifier-resolution=node src/seeder/seed.js"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.2",
