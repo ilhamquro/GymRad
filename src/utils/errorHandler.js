@@ -1,7 +1,7 @@
 const databaseErrorHandler = (dbResult, res) => {
-  if (dbResult.error.target === undefined) {
+  if (dbResult.code === 400) {
     res.status(500);
-    res.send(`Error: ${dbResult}`);
+    res.send(`Error: Database mu ga konek TOD`);
     return;
   }
   const errorTarget = dbResult.error.meta.target;
