@@ -1,4 +1,9 @@
 const databaseErrorHandler = (dbResult, res) => {
+  if (dbResult.error.target === undefined) {
+    res.status(500);
+    res.send(`Error: ${dbResult}`);
+    return;
+  }
   const errorTarget = dbResult.error.meta.target;
 
   if (/username/.test(errorTarget)) {
